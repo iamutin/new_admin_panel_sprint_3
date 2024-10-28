@@ -38,6 +38,7 @@ if __name__ == '__main__':
     while True:
         try:
             update_index()
-            sleep(60)
         except Exception as e:
             logger.error(e)
+        finally:
+            sleep(60)

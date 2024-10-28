@@ -7,8 +7,6 @@ services:
       - ./database_dump.sql:/docker-entrypoint-initdb.d/init.sql
     env_file:
       - .env
-    ports:
-      - "5432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 30s
@@ -36,7 +34,7 @@ services:
 
   etl_service:
     build: etl
-    container_name: elt
+    container_name: etl
     env_file:
       - .env
     depends_on:
